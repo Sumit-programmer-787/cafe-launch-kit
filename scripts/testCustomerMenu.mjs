@@ -1,9 +1,11 @@
-
+import React from "react";
 import { render } from "@hyper-elements/react";
 import CustomerMenu from "../src/templates/CustomerMenu.jsx";
 import fs from "node:fs";
 
-const result = await render(CustomerMenu());
+const result = await render(
+  React.createElement(CustomerMenu)
+);
 
 fs.writeFileSync(
   "customer-menu.html",

@@ -1,32 +1,40 @@
 
-const cafeTheme = {
+import { defineTheme } from "@hyper-elements/react";
+
+const cafeTheme = defineTheme({
   colors: {
-    primary: "#8B4513",
-    secondary: "#F5E6D3",
     background: "#FFFDF8",
-    surface: "#FFFFFF",
-    text: "#2D2118",
+    foreground: "#2D2118",
+    primary: "#8B4513",
+    primaryForeground: "#FFFFFF",
+    secondary: "#F5E6D3",
     muted: "#78685C",
-    accent: "#D97706",
-    success: "#2E7D32",
-    danger: "#C62828",
+    border: "#EADBC8",
+    surface: "#FFFFFF",
   },
 
   fonts: {
-    heading: "Georgia",
-    body: "Arial",
+    heading: "Georgia, serif",
+    body: "Arial, sans-serif",
   },
 
-  spacing: {
-    small: 8,
-    medium: 16,
-    large: 24,
+  fontSizes: {
+    body: 16,
   },
 
-  radii: {
-    card: 12,
-    button: 8,
+  styles: {
+    menuItem: {
+      backgroundColor: "{colors.surface}",
+      border: {
+        width: 1,
+        style: "solid",
+        color: "{colors.border}",
+      },
+      borderRadius: 10,
+      padding: 18,
+      gap: 12,
+    },
   },
-};
+});
 
 export default cafeTheme;
