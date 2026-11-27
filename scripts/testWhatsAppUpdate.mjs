@@ -1,9 +1,10 @@
 import React from "react";
 import { render } from "@hyper-elements/react";
 import WhatsAppUpdate from "../src/templates/WhatsAppUpdate.jsx";
+import cafeData from "../src/data/activeCafe.js";
 import fs from "node:fs";
 
-const result = await render(WhatsAppUpdate());
+const result = await render(WhatsAppUpdate({ cafeData }));
 
 fs.writeFileSync(
   "whatsapp-update.html",

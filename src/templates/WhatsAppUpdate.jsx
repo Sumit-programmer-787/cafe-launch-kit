@@ -11,10 +11,10 @@ import {
   token,
 } from "@hyper-elements/react";
 
-import cafeData from "../data/cafeData";
+// import cafeData from "../data/cafeData";
 import cafeTheme from "../theme/cafeTheme";
 
-const WhatsAppUpdate = () => {
+const WhatsAppUpdate = ({ cafeData }) => {
   const availableItems = cafeData.menu.filter(
     (item) => item.available
   );

@@ -11,10 +11,10 @@ import {
   TableCell,
 } from "@hyper-elements/react";
 
-import cafeData from "../data/cafeData";
+
 import cafeTheme from "../theme/cafeTheme";
 
-const KitchenPrepSheet = () => {
+const KitchenPrepSheet = ({ cafeData }) => {
   return (
     <Document
       title="Kitchen Prep Sheet"

@@ -1,11 +1,11 @@
 import React from "react";
 import fs from "node:fs/promises";
-
+import cafeData from "../src/data/activeCafe.js";
 import WhatsAppUpdate from "../src/templates/WhatsAppUpdate.jsx";
 import { renderImage } from "@hyper-elements/react/image";
 
 const result = await renderImage(
-  React.createElement(WhatsAppUpdate),
+  React.createElement(WhatsAppUpdate, { cafeData }),
   {
     fonts: [
       {

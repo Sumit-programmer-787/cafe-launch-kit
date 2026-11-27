@@ -3,9 +3,9 @@ import { render } from "@hyper-elements/react";
 import CustomerMenu from "../src/templates/CustomerMenu.jsx";
 import fs from "node:fs";
 
-const result = await render(
-  React.createElement(CustomerMenu)
-);
+import cafeData from "../src/data/activeCafe.js";
+
+const result = await render(CustomerMenu({ cafeData }));
 
 fs.writeFileSync(
   "customer-menu.html",

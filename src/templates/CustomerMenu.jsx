@@ -9,10 +9,10 @@ import {
   token,
 } from "@hyper-elements/react";
 
-import cafeData from "../data/cafeData";
+
 import cafeTheme from "../theme/cafeTheme";
 
-const CustomerMenu = () => {
+const CustomerMenu = ({ cafeData }) => {
   const availableItems = cafeData.menu.filter(
     (item) => item.available
   );
@@ -87,7 +87,7 @@ const CustomerMenu = () => {
           alignItems: "center",
         }}
       >
-        <Text>Freshly made, happily served!</Text>
+        <Text>{cafeData.cafe.tagline}</Text>
       </Section>
     </Page>
   );

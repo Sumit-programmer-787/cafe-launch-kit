@@ -10,10 +10,10 @@ import {
   token,
 } from "@hyper-elements/react";
 
-import cafeData from "../data/cafeData";
+
 import cafeTheme from "../theme/cafeTheme";
 
-const CounterMenu = () => {
+const CounterMenu = ({ cafeData }) => {  
   const availableItems = cafeData.menu.filter(
     (item) => item.available
   );
