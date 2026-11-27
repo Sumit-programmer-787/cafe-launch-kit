@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import "./App.css";
 import chaiData from "./data/cafeData";
@@ -9,7 +10,6 @@ const outputs = [
     title: "Customer Menu",
     description: "A live menu that automatically hides unavailable items.",
     type: "HTML MENU",
-    href: "/customer-menu.html",
     preview: "menu",
   },
   {
@@ -17,7 +17,6 @@ const outputs = [
     title: "Counter Menu",
     description: "A polished, category-wise menu ready for printing.",
     type: "PRINT DESIGN",
-    href: "/counter-menu.html",
     preview: "counter",
   },
   {
@@ -25,7 +24,6 @@ const outputs = [
     title: "Kitchen Prep",
     description: "Preparation quantities and availability for your team.",
     type: "KITCHEN DOCUMENT",
-    href: "/kitchen-prep-sheet.pdf",
     preview: "pdf",
   },
   {
@@ -33,7 +31,6 @@ const outputs = [
     title: "Daily WhatsApp Update",
     description: "A ready-to-share visual update for your customers.",
     type: "SOCIAL IMAGE",
-    href: "/whatsapp-daily-update.png",
     preview: "image",
   },
 ];
@@ -73,8 +70,13 @@ function App() {
 
   const cafeData = activeCafe === "chai" ? chaiData : beanData;
 
-  console.log("Selected cafe:", activeCafe);
-  console.log("Preview path:", `/demos/${activeCafe}/kitchen-prep-sheet.pdf`);
+  const outputFiles = {
+    menu: "customer-menu.html",
+    counter: "counter-menu.html",
+    pdf: "kitchen-prep-sheet.pdf",
+    image: "whatsapp-daily-update.png",
+  };
+
   return (
     <main>
       {/* NAVBAR */}
@@ -109,25 +111,27 @@ function App() {
         <div className="hero-copy">
           <div className="eyebrow">
             <span className="live-dot"></span>
-            A DAILY CONTENT SYSTEM FOR CAFÉS
+            A SMARTER DAILY SYSTEM FOR CAFÉS
           </div>
 
           <h1>
-            Run your café.
+            One menu.
             <br />
-            <span>Not four different</span>
+            <span>Every café update.</span>
             <br />
-            content workflows.
+            All in sync.
           </h1>
 
           <p className="hero-description">
-            One menu. One source of truth. Every daily update,
-            from customer-facing menus to the kitchen prep sheet.
+            Manage your café's menu information in one place.
+            Generate customer menus, printable counter menus,
+            kitchen prep sheets and WhatsApp updates without
+            maintaining four separate versions.
           </p>
 
           <div className="hero-actions">
             <a href="#outputs" className="primary-cta">
-              Explore the templates <span>↗</span>
+              Explore the live demos <span>↗</span>
             </a>
 
             <a href="#workflow" className="secondary-cta">
@@ -136,9 +140,11 @@ function App() {
           </div>
 
           <div className="hero-caption">
-            <span>BUILT FOR INDEPENDENT CAFÉS</span>
+            <span>ONE DATASET</span>
             <span className="caption-divider"></span>
-            <span>POWERED BY HYPER ELEMENTS</span>
+            <span>FOUR OUTPUTS</span>
+            <span className="caption-divider"></span>
+            <span>TWO CAFÉ DEMOS</span>
           </div>
         </div>
 
@@ -182,7 +188,7 @@ function App() {
               <div className="dashboard-heading">
                 <div>
                   <span className="small-label">
-                    FRIDAY · DAILY MENU
+                    DAILY MENU
                   </span>
 
                   <h3>{cafeData.cafe.name}</h3>
@@ -370,15 +376,7 @@ function App() {
                 <p>{output.description}</p>
 
                 <a
-                  href={`/demos/${activeCafe}/${
-                    output.preview === "menu"
-                      ? "customer-menu.html"
-                      : output.preview === "counter"
-                      ? "counter-menu.html"
-                      : output.preview === "pdf"
-                      ? "kitchen-prep-sheet.pdf"
-                      : "whatsapp-daily-update.png"
-                  }`}
+                  href={`/demos/${activeCafe}/${outputFiles[output.preview]}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -406,6 +404,8 @@ function App() {
           <p>
             ChaiBoard is a reusable, white-label content kit
             built to make everyday café communication simpler.
+            One shared dataset keeps customer-facing menus,
+            kitchen information and daily updates consistent.
           </p>
         </div>
 
