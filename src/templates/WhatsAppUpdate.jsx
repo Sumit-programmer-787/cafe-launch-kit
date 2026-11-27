@@ -1,5 +1,6 @@
 import React from "react";
 
+
 import {
   Canvas,
   Section,
@@ -22,8 +23,17 @@ const WhatsAppUpdate = () => {
     (item) => !item.available
   );
 
+  const today = new Date().toLocaleDateString("en-IN", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
+});
   return (
-    <Canvas theme={cafeTheme}>
+    <Canvas
+  width={1080}
+  height={1350}
+  theme={cafeTheme}
+>
       <Section
         style={{
           backgroundColor: token("colors.primary"),
@@ -46,6 +56,10 @@ const WhatsAppUpdate = () => {
         <Text style={{ color: "#F5E6D3", fontSize: 14 }}>
           {cafeData.cafe.tagline}
         </Text>
+
+        <Text style={{ color: "#F5E6D3", fontSize: 12 }}>
+  {today}
+</Text>
       </Section>
 
       <Section
@@ -71,7 +85,7 @@ const WhatsAppUpdate = () => {
               padding: 8,
             }}
           >
-            <Text style={{ fontWeight: 600 }}>
+            <Text style={{ fontWeight: 700 }}>
               {item.name}
             </Text>
 

@@ -1,1 +1,228 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>@page{size:A4 portrait;margin:0}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}@media screen{body{background:#e5e7eb;padding:24px 0}.elements-page{background-color:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}.elements-page+.elements-page{margin-top:24px!important}}</style></head><body style="margin:0"><main style="color:#2d2118;font-family:Arial, sans-serif;font-size:16px;font-weight:400;font-style:normal;line-height:1.5;letter-spacing:0;text-align:left;text-transform:none"><section class="elements-page" style="box-sizing:border-box;width:793.7px;height:1122.52px;margin:0 auto;padding:48px 48px 48px 48px;display:flex;flex-direction:column;background-color:#fffdf8;overflow:hidden"><div style="flex:1 1 auto;min-height:0;display:flex;flex-direction:column"><section style="display:flex;flex-direction:column;gap:10px;padding:32px max(32px, calc((100% - 698px) / 2 + 32px)) 32px max(32px, calc((100% - 698px) / 2 + 32px));background-color:#8b4513"><p style="margin:0;color:#f5e6d3;font-size:12px">EST. WITH LOVE • FRESHLY PREPARED</p><h1 style="margin:0;color:#fff;font-family:Georgia, serif;font-size:34px;font-weight:700;line-height:1.25">The Chai Corner</h1><p style="margin:0;color:#f5e6d3;font-size:14px">Freshly made, happily served.</p><p style="margin:0;color:#f5e6d3;font-size:12px">Gaya, Bihar, India</p></section><section style="display:flex;flex-direction:column;gap:20px;padding:28px max(28px, calc((100% - 698px) / 2 + 28px)) 28px max(28px, calc((100% - 698px) / 2 + 28px));background-color:#fffdf8"><div style="display:flex;flex-direction:column;gap:5px"><h2 style="margin:0;color:#8b4513;font-family:Georgia, serif;font-size:26px;font-weight:700;line-height:1.25">OUR MENU</h2><p style="margin:0;color:#78685c;font-size:12px">GOOD FOOD. GOOD MOOD.</p></div><div style="display:flex;flex-direction:column;gap:12px"><h3 style="margin:0;color:#8b4513;font-family:Georgia, serif;font-size:19px;font-weight:700;line-height:1.25">Beverages</h3><div class="emfqa6" style="display:flex;align-items:center;justify-content:space-between;box-sizing:border-box;padding:10px"><p style="flex:1 1 0%;min-width:0;margin:0;font-weight:600">Masala Chai</p><p style="flex:1 1 0%;min-width:0;margin:0;color:#8b4513;font-weight:700">INR 15</p></div><div class="emfqa6" style="display:flex;align-items:center;justify-content:space-between;box-sizing:border-box;padding:10px"><p style="flex:1 1 0%;min-width:0;margin:0;font-weight:600">Cold Coffee</p><p style="flex:1 1 0%;min-width:0;margin:0;color:#8b4513;font-weight:700">INR 50</p></div></div><div style="display:flex;flex-direction:column;gap:12px"><h3 style="margin:0;color:#8b4513;font-family:Georgia, serif;font-size:19px;font-weight:700;line-height:1.25">Snacks</h3><div class="emfqa6" style="display:flex;align-items:center;justify-content:space-between;box-sizing:border-box;padding:10px"><p style="flex:1 1 0%;min-width:0;margin:0;font-weight:600">Veg Momos</p><p style="flex:1 1 0%;min-width:0;margin:0;color:#8b4513;font-weight:700">INR 60</p></div></div><div style="display:flex;flex-direction:column;gap:12px"><h3 style="margin:0;color:#8b4513;font-family:Georgia, serif;font-size:19px;font-weight:700;line-height:1.25">Fast Food</h3><div class="emfqa6" style="display:flex;align-items:center;justify-content:space-between;box-sizing:border-box;padding:10px"><p style="flex:1 1 0%;min-width:0;margin:0;font-weight:600">Veg Burger</p><p style="flex:1 1 0%;min-width:0;margin:0;color:#8b4513;font-weight:700">INR 70</p></div></div></section><section style="display:flex;flex-direction:column;gap:6px;padding:18px max(18px, calc((100% - 698px) / 2 + 18px)) 18px max(18px, calc((100% - 698px) / 2 + 18px));background-color:#f5e6d3"><p style="margin:0;color:#8b4513;font-weight:700">THANK YOU FOR VISITING!</p><p style="margin:0;color:#78685c;font-size:12px">Freshly made, happily served.</p></section></div></section></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Chai Corner - Menu</title>
+
+  <style>
+    :root {
+      --brown: #8b4513;
+      --cream: #f5e6d3;
+      --paper: #fffdf8;
+      --text: #2d2118;
+      --muted: #78685c;
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Page */
+    .page {
+      width: 100%;
+      max-width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 48px;
+      background: var(--paper);
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, serif;
+      line-height: 1.25;
+    }
+
+    h2, h3 {
+      color: var(--brown);
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 32px;
+      background: var(--brown);
+      color: var(--cream);
+    }
+
+    .header h1 {
+      color: #fff;
+      font-size: 34px;
+    }
+
+    .header p {
+      font-size: 12px;
+    }
+
+    .header .tagline {
+      font-size: 14px;
+    }
+
+    /* Menu */
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 28px;
+    }
+
+    .menu h2 {
+      margin-bottom: 5px;
+      font-size: 26px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .category {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      break-inside: avoid;
+    }
+
+    .category h3 {
+      font-size: 19px;
+    }
+
+    .category ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .category li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 10px;
+      font-weight: 600;
+    }
+
+    .price {
+      color: var(--brown);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 18px;
+      background: var(--cream);
+    }
+
+    .footer strong {
+      color: var(--brown);
+    }
+
+    .footer p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* Screen only */
+    @media screen {
+      body {
+        padding: 24px 0;
+        background: #e5e7eb;
+      }
+
+      .page {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    /* Mobile */
+    @media screen and (max-width: 600px) {
+      .page {
+        min-height: auto;
+        padding: 16px;
+      }
+
+      .header,
+      .menu {
+        padding: 20px;
+      }
+    }
+
+    /* Print: slightly under A4 height to reduce the risk of a blank page */
+    @media print {
+      .page {
+        min-height: 296mm;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="header">
+      <p>EST. WITH LOVE • FRESHLY PREPARED</p>
+      <h1>The Chai Corner</h1>
+      <p class="tagline">Freshly made, happily served.</p>
+      <p>Gaya, Bihar, India</p>
+    </header>
+
+    <section class="menu">
+      <div>
+        <h2>OUR MENU</h2>
+        <p class="subtitle">GOOD FOOD. GOOD MOOD.</p>
+      </div>
+
+      <section class="category">
+        <h3>Beverages</h3>
+        <ul>
+          <li><span>Masala Chai</span><span class="price">INR 20</span></li>
+          <li><span>Cold Coffee</span><span class="price">INR 50</span></li>
+        </ul>
+      </section>
+
+      <section class="category">
+        <h3>Snacks</h3>
+        <ul>
+          <li><span>Veg Momos</span><span class="price">INR 60</span></li>
+        </ul>
+      </section>
+
+      <section class="category">
+        <h3>Fast Food</h3>
+        <ul>
+          <li><span>Veg Burger</span><span class="price">INR 70</span></li>
+        </ul>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <strong>THANK YOU FOR VISITING!</strong>
+      <p>Freshly made, happily served.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

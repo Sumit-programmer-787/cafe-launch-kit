@@ -1,4 +1,3 @@
-
 const cafeData = {
   cafe: {
     name: "The Chai Corner",
@@ -14,7 +13,7 @@ menu: [
       id: 1,
       name: "Masala Chai",
       category: "Beverages",
-      price: 15,
+      price: 20,
       available: true,
       prepQuantity: 40,
     },
