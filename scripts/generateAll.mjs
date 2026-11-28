@@ -19,25 +19,53 @@ const cafes = [
   { folder: "bean", data: beanData },
 ];
 
+// Find fonts available on the current operating system.
+async function findFont(candidates) {
+  for (const path of candidates) {
+    try {
+      await fs.access(path);
+      return await fs.readFile(path);
+    } catch {
+      // Try the next font path.
+    }
+  }
+
+  throw new Error(`No compatible font found. Checked: ${candidates.join(", ")}`);
+}
+
 const fonts = [
   {
     family: "Arial",
-    src: await fs.readFile("C:/Windows/Fonts/arial.ttf"),
+    src: await findFont([
+      "C:/Windows/Fonts/arial.ttf",
+      "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",
+      "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    ]),
     weight: 400,
   },
   {
     family: "Arial",
-    src: await fs.readFile("C:/Windows/Fonts/arialbd.ttf"),
+    src: await findFont([
+      "C:/Windows/Fonts/arialbd.ttf",
+      "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf",
+      "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    ]),
     weight: 700,
   },
   {
     family: "Georgia",
-    src: await fs.readFile("C:/Windows/Fonts/georgia.ttf"),
+    src: await findFont([
+      "C:/Windows/Fonts/georgia.ttf",
+      "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+    ]),
     weight: 400,
   },
   {
     family: "Georgia",
-    src: await fs.readFile("C:/Windows/Fonts/georgiab.ttf"),
+    src: await findFont([
+      "C:/Windows/Fonts/georgiab.ttf",
+      "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+    ]),
     weight: 700,
   },
 ];
@@ -50,7 +78,6 @@ for (const cafe of cafes) {
 
   console.log(`\nGenerating outputs for ${data.cafe.name}...`);
 
-  // 1. Customer Menu
   const customerResult = await render(
     React.createElement(CustomerMenu, { cafeData: data })
   );
@@ -62,9 +89,8 @@ for (const cafe of cafes) {
   );
 
   console.log("Customer menu generated.");
-  console.log("Customer menu diagnostics:", customerResult.diagnostics);
+  console.log("Diagnostics:", customerResult.diagnostics);
 
-  // 2. Counter Menu
   const counterResult = await render(
     React.createElement(CounterMenu, { cafeData: data })
   );
@@ -76,9 +102,8 @@ for (const cafe of cafes) {
   );
 
   console.log("Counter menu generated.");
-  console.log("Counter menu diagnostics:", counterResult.diagnostics);
+  console.log("Diagnostics:", counterResult.diagnostics);
 
-  // 3. Kitchen Prep PDF
   const kitchenResult = await renderPdf(
     React.createElement(KitchenPrepSheet, { cafeData: data })
   );
@@ -89,9 +114,8 @@ for (const cafe of cafes) {
   );
 
   console.log("Kitchen Prep PDF generated.");
-  console.log("Kitchen PDF diagnostics:", kitchenResult.diagnostics);
+  console.log("Diagnostics:", kitchenResult.diagnostics);
 
-  // 4. WhatsApp Update PNG
   const whatsappResult = await renderImage(
     React.createElement(WhatsAppUpdate, { cafeData: data }),
     { fonts }
@@ -103,8 +127,8 @@ for (const cafe of cafes) {
   );
 
   console.log("WhatsApp update generated.");
-  console.log("Image dimensions:", whatsappResult.width, "x", whatsappResult.height);
-  console.log("WhatsApp diagnostics:", whatsappResult.diagnostics);
+  console.log("Dimensions:", whatsappResult.width, "x", whatsappResult.height);
+  console.log("Diagnostics:", whatsappResult.diagnostics);
 }
 
 console.log("\nAll outputs generated successfully for both cafés!");
