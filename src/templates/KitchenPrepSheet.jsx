@@ -1,6 +1,5 @@
 
 import React from "react";
-
 import {
   Document,
   Section,
@@ -11,36 +10,43 @@ import {
   TableCell,
 } from "@hyper-elements/react";
 
-
 import cafeTheme from "../theme/cafeTheme";
 
 const KitchenPrepSheet = ({ cafeData }) => {
+  const availableItems = cafeData.menu.filter((item) => item.available);
+  const soldOutItems = cafeData.menu.filter((item) => !item.available);
+
   return (
     <Document
-      title="Kitchen Prep Sheet"
+      title={`${cafeData.cafe.name} - Kitchen Prep Sheet`}
       size="A4"
       theme={cafeTheme}
     >
-      <Section style={{ gap: 12 }}>
-        <Heading level={1}>
-          {cafeData.cafe.name}
-        </Heading>
-
-        <Heading level={2}>
-          Daily Kitchen Prep Sheet
-        </Heading>
-
+      {/* HEADER */}
+      <Section style={{ gap: 10 }}>
+        <Heading level={1}>{cafeData.cafe.name}</Heading>
+        <Heading level={2}>Daily Kitchen Preparation Sheet</Heading>
+        <Text>Date: ____________________    Shift: ____________________</Text>
         <Text>
-          Date: ____________________
+          Prepare and verify today's menu before service begins.
         </Text>
+      </Section>
 
-        <Text>
-          Prepare the following items for today's service.
-        </Text>
+      {/* PREPARATION OVERVIEW */}
+      <Section style={{ backgroundColor: "#F5E6D3", padding: 14, gap: 8 }}>
+        <Heading level={3}>Preparation Overview</Heading>
+        <Text>Total menu items: {cafeData.menu.length}</Text>
+        <Text>Available items: {availableItems.length}</Text>
+        <Text>Sold-out items: {soldOutItems.length}</Text>
+      </Section>
+
+      {/* PREPARATION CHECKLIST */}
+      <Section style={{ gap: 10 }}>
+        <Heading level={3}>Preparation Checklist</Heading>
 
         <Table
           style={{
-            cellPadding: [10, 8],
+            cellPadding: [9, 7],
             rowBorder: {
               width: 1,
               style: "solid",
@@ -52,26 +58,40 @@ const KitchenPrepSheet = ({ cafeData }) => {
             <TableCell>Menu Item</TableCell>
             <TableCell>Prep Quantity</TableCell>
             <TableCell>Status</TableCell>
+            <TableCell>Checked</TableCell>
           </TableRow>
 
           {cafeData.menu.map((item) => (
             <TableRow key={item.id}>
               <TableCell>{item.name}</TableCell>
-
+              <TableCell>{item.prepQuantity ?? "Not specified"}</TableCell>
               <TableCell>
-                {item.prepQuantity}
+                {item.available ? "AVAILABLE" : "SOLD OUT"}
               </TableCell>
-
-              <TableCell>
-                {item.available ? "Available" : "Sold Out"}
-              </TableCell>
+              <TableCell>________</TableCell>
             </TableRow>
           ))}
         </Table>
+      </Section>
 
-        <Text>
-          Kitchen staff: ____________________
-        </Text>
+      {/* ITEMS REQUIRING ATTENTION */}
+      {soldOutItems.length > 0 && (
+        <Section style={{ gap: 6 }}>
+          <Heading level={3}>Items Requiring Attention</Heading>
+
+          {soldOutItems.map((item) => (
+            <Text key={item.id}>
+              {item.name} — Restock before service
+            </Text>
+          ))}
+        </Section>
+      )}
+
+      {/* STAFF VERIFICATION */}
+      <Section style={{ gap: 12 }}>
+        <Text>Kitchen staff: __________________________</Text>
+        <Text>Preparation verified by: __________________</Text>
+        <Text>Manager approval: ________________________</Text>
       </Section>
     </Document>
   );

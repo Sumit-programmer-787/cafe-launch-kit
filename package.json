@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run generate && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate": "tsx scripts/generateAll.mjs"
   },
   "dependencies": {
     "@hyper-elements/react": "^0.5.2",

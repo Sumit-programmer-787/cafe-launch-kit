@@ -1091,9 +1091,10 @@ img.real-preview {
   .navbar {
     flex-wrap: wrap;
     gap: 17px;
-    .outputs-grid {
-  grid-template-columns: 1fr;
   }
+
+  .outputs-grid {
+    grid-template-columns: 1fr;
   }
   .nav-links {
     gap: 20px;
@@ -1386,5 +1387,46 @@ img.real-preview {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+}
+
+
+.template-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.template-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.template-actions a:first-child {
+  color: var(--primary, #8b4b2b);
+}
+
+.template-actions a:last-child {
+  background: #8b4b2b;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 7px;
+}
+
+.template-actions a:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .template-actions {
+    gap: 12px;
   }
 }

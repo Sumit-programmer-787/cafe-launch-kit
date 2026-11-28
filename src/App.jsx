@@ -187,9 +187,7 @@ function App() {
             <div className="dashboard-body">
               <div className="dashboard-heading">
                 <div>
-                  <span className="small-label">
-                    DAILY MENU
-                  </span>
+                  <span className="small-label">DAILY MENU</span>
 
                   <h3>{cafeData.cafe.name}</h3>
                   <p>{cafeData.cafe.tagline}</p>
@@ -357,34 +355,48 @@ function App() {
         </div>
 
         <div className="outputs-grid">
-          {outputs.map((output) => (
-            <article className="template-card" key={output.number}>
-              <div className="template-preview">
-                <OutputPreview
-                  type={output.preview}
-                  cafe={activeCafe}
-                />
-              </div>
+          {outputs.map((output) => {
+            const file = outputFiles[output.preview];
+            const outputUrl = `/demos/${activeCafe}/${file}`;
 
-              <div className="template-details">
-                <div className="template-meta">
-                  <span>{output.type}</span>
-                  <span>{output.number}</span>
+            return (
+              <article className="template-card" key={output.number}>
+                <div className="template-preview">
+                  <OutputPreview
+                    type={output.preview}
+                    cafe={activeCafe}
+                  />
                 </div>
 
-                <h3>{output.title}</h3>
-                <p>{output.description}</p>
+                <div className="template-details">
+                  <div className="template-meta">
+                    <span>{output.type}</span>
+                    <span>{output.number}</span>
+                  </div>
 
-                <a
-                  href={`/demos/${activeCafe}/${outputFiles[output.preview]}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Open output <span>↗</span>
-                </a>
-              </div>
-            </article>
-          ))}
+                  <h3>{output.title}</h3>
+                  <p>{output.description}</p>
+
+                  <div className="template-actions">
+                    <a
+                      href={outputUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Open output <span>↗</span>
+                    </a>
+
+                    <a
+                      href={outputUrl}
+                      download={`${activeCafe}-${file}`}
+                    >
+                      Download <span>↓</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
